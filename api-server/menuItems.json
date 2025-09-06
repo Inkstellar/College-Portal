@@ -1,0 +1,135 @@
+[
+  {
+    "id": "remote-app",
+    "label": "Remote Access",
+    "icon": "Dashboard",
+    "route": "/remote",
+    "order": 1,
+    "isActive": true,
+    "requiredRoles": [],
+    "createdAt": "2025-09-04T12:05:40.732Z",
+    "updatedAt": "2025-09-04T12:05:40.733Z"
+  },
+  {
+    "id": "remote-dashboard",
+    "label": "Remote Dashboard",
+    "icon": "Dashboard",
+    "route": "/remote/dashboard",
+    "parentId": "remote-app",
+    "order": 1,
+    "isActive": true,
+    "requiredRoles": [],
+    "createdAt": "2025-09-04T12:05:40.733Z",
+    "updatedAt": "2025-09-04T12:05:40.733Z"
+  },
+  {
+    "id": "remote-connections",
+    "label": "Remote Connections",
+    "icon": "People",
+    "route": "/remote/connections",
+    "parentId": "remote-app",
+    "order": 2,
+    "isActive": true,
+    "requiredRoles": [],
+    "createdAt": "2025-09-04T12:05:40.733Z",
+    "updatedAt": "2025-09-04T12:05:40.733Z"
+  },
+  {
+    "id": "remote-settings",
+    "isActive": true,
+    "createdAt": "2025-09-04T12:05:40.733Z",
+    "updatedAt": "2025-09-04T16:37:34.905Z",
+    "label": "Remote Settings",
+    "icon": "",
+    "route": "/remote/remote-settings",
+    "parentId": "remote-app",
+    "order": "3",
+    "requiredRoles": []
+  },
+  {
+    "id": "admin-app",
+    "label": "Administration",
+    "icon": "School",
+    "route": "/admin",
+    "order": 2,
+    "isActive": true,
+    "requiredRoles": [
+      "admin",
+      "faculty"
+    ],
+    "createdAt": "2025-09-04T12:05:40.733Z",
+    "updatedAt": "2025-09-04T12:05:40.733Z"
+  },
+  {
+    "id": "admin-users",
+    "label": "User Management",
+    "icon": "People",
+    "route": "/admin/users",
+    "parentId": "admin-app",
+    "order": 1,
+    "isActive": true,
+    "requiredRoles": [
+      "admin"
+    ],
+    "createdAt": "2025-09-04T12:05:40.733Z",
+    "updatedAt": "2025-09-04T12:05:40.733Z"
+  },
+  {
+    "id": "admin-reports",
+    "label": "Admin Reports",
+    "icon": "Assessment",
+    "route": "/admin/reports",
+    "parentId": "admin-app",
+    "order": 2,
+    "isActive": true,
+    "requiredRoles": [
+      "admin",
+      "faculty"
+    ],
+    "createdAt": "2025-09-04T12:05:40.733Z",
+    "updatedAt": "2025-09-04T12:05:40.733Z"
+  },
+  {
+    "id": "admin-system",
+    "isActive": true,
+    "createdAt": "2025-09-04T12:05:40.733Z",
+    "updatedAt": "2025-09-04T16:44:24.557Z",
+    "label": "System Settings",
+    "icon": "Settings",
+    "route": "/admin/system",
+    "parentId": "admin-app",
+    "order": 3,
+    "requiredRoles": [
+      "admin"
+    ]
+  },
+  {
+    "id": "admin-menu-management",
+    "label": "Menu Management",
+    "icon": "Settings",
+    "route": "/admin/menu-management",
+    "parentId": "admin-app",
+    "order": 4,
+    "isActive": true,
+    "requiredRoles": [
+      "admin"
+    ],
+    "createdAt": "2025-09-04T12:05:40.733Z",
+    "updatedAt": "2025-09-04T12:05:40.733Z"
+  },
+  {
+    "id": "remote-login",
+    "label": "Login",
+    "icon": "People",
+    "route": "/remote/login",
+    "parentId": null,
+    "order": "3",
+    "isActive": true,
+    "requiredRoles": [
+      "admin",
+      "faculty"
+    ],
+    "createdAt": "2025-09-05T15:45:20.880Z",
+    "updatedAt": "2025-09-05T15:45:20.880Z"
+  }
+]

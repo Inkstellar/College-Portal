@@ -1,0 +1,45 @@
+[
+  {
+    "id": "1",
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "password": "password123",
+    "role": "student",
+    "studentId": "STU001",
+    "department": "Computer Science",
+    "year": 3,
+    "phone": "+1234567890",
+    "address": "123 Main St",
+    "isActive": true,
+    "lastLogin": "2024-04-09T10:00:00.000Z",
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-04-09T10:00:00.000Z"
+  },
+  {
+    "id": "2",
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com",
+    "password": "password123",
+    "role": "faculty",
+    "department": "Computer Science",
+    "phone": "+1234567891",
+    "address": "456 Oak St",
+    "isActive": true,
+    "lastLogin": "2024-04-08T15:30:00.000Z",
+    "createdAt": "2024-01-02T00:00:00.000Z",
+    "updatedAt": "2024-04-08T15:30:00.000Z"
+  },
+  {
+    "id": "3",
+    "name": "Admin User",
+    "email": "admin@example.com",
+    "password": "admin123",
+    "role": "admin",
+    "phone": "+1234567892",
+    "address": "789 Pine St",
+    "isActive": true,
+    "lastLogin": "2024-04-09T09:00:00.000Z",
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-04-09T09:00:00.000Z"
+  }
+]
