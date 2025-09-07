@@ -7,8 +7,7 @@ import { Stack } from '@mui/material';
 export interface RegistrationProps {
     onRegister?: (name: string, email: string, password: string) => void;
 }
-
-export const Registration: React.FC<RegistrationProps> = ({ onRegister }) => {
+const Registration: React.FC<RegistrationProps> = ({ onRegister }) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -64,3 +63,5 @@ export const Registration: React.FC<RegistrationProps> = ({ onRegister }) => {
         </FormContainer>
     );
 };
+
+export default Registration;

@@ -3,8 +3,6 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme';
 import './App.css'
-import { Card } from './components/display';
-import { Registration } from './components/forms';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,7 +12,6 @@ function App() {
       <CssBaseline />
       <>
        Remote App Running Standalone
-       <Registration/>
       </>
     </ThemeProvider>
   )

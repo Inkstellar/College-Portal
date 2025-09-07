@@ -1,16 +1,13 @@
 /// <reference types="vite/client" />
 
-declare module 'remoteApp/Button' {
-  const Button: React.ComponentType<{
-    text: string;
-    onClick?: () => void;
-  }>;
-  export default Button;
+declare module 'remoteApp/Login' {
+  const Login: React.ComponentType<{}>;
+  export default Login;
 }
 
-declare module 'remoteApp/Card' {
-  const Card: React.ComponentType<{}>;
-  export default Card;
+declare module 'remoteApp/Registration' {
+  const Registration: React.ComponentType<{}>;
+  export default Registration;
 }
 
 declare module 'adminApp/AdminDashboard' {
@@ -26,9 +23,4 @@ declare module 'adminApp/UserManagement' {
 declare module 'adminApp/MenuManagement' {
   const MenuManagement: React.ComponentType<{}>;
   export default MenuManagement;
-}
-
-declare module 'remoteApp/Login' {
-  const Login: React.ComponentType<{}>;
-  export default Login;
 }

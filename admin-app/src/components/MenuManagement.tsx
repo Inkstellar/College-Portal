@@ -27,7 +27,8 @@ import {
   FolderOpen as FolderOpenIcon,
   Description as FileIcon,
   ExpandMore as ExpandMoreIcon,
-  ChevronRight as ChevronRightIcon
+  ChevronRight as ChevronRightIcon,
+  MoreHoriz,
 } from '@mui/icons-material';
 
 interface MenuItem {
@@ -234,7 +235,7 @@ const MenuManagement: React.FC = () => {
             >
               Refresh
             </Button>
-            <Box sx={{flex:1}}>asd</Box>
+            <Box sx={{flex:1}}></Box>
             <Typography variant="body2" color="text.secondary">
               Total items: {menuItems.length} | Active: {menuItems.filter(item => item.isActive).length}
             </Typography>
@@ -243,7 +244,7 @@ const MenuManagement: React.FC = () => {
       </AppBar>
       <Stack spacing={2} direction={'row'} >
         {/* Menu Tree View */}
-        <Box sx={{ mb: 4, flex: 1, minWidth: '50%' }}>
+        <Box sx={{ mb: 4, flex: 1, maxWidth: '50%' }}>
           <Typography variant="h5" component="h3" gutterBottom sx={{ borderBottom: 2, borderColor: 'primary.main', pb: 1 }}>
             Menu Structure
           </Typography>
@@ -286,16 +287,15 @@ const MenuManagement: React.FC = () => {
                             <Tooltip title="Edit">
                               <IconButton
                                 size="small"
-                                color="warning"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   handleEdit(rootItem);
                                 }}
                               >
-                                <EditIcon fontSize="small" />
+                                <MoreHoriz fontSize="small" />
                               </IconButton>
                             </Tooltip>
-                            <Tooltip title={rootItem.isActive ? 'Deactivate' : 'Activate'}>
+                            {/* <Tooltip title={rootItem.isActive ? 'Deactivate' : 'Activate'}>
                               <IconButton
                                 size="small"
                                 color={rootItem.isActive ? 'error' : 'success'}
@@ -318,7 +318,7 @@ const MenuManagement: React.FC = () => {
                               >
                                 <DeleteIcon fontSize="small" />
                               </IconButton>
-                            </Tooltip>
+                            </Tooltip> */}
                           </Box>
                         </Box>
                       }
@@ -351,10 +351,10 @@ const MenuManagement: React.FC = () => {
                                         handleEdit(childItem);
                                       }}
                                     >
-                                      <EditIcon fontSize="small" />
+                                      <MoreHoriz fontSize="small" />
                                     </IconButton>
                                   </Tooltip>
-                                  <Tooltip title={childItem.isActive ? 'Deactivate' : 'Activate'}>
+                                  {/* <Tooltip title={childItem.isActive ? 'Deactivate' : 'Activate'}>
                                     <IconButton
                                       size="small"
                                       color={childItem.isActive ? 'error' : 'success'}
@@ -377,7 +377,7 @@ const MenuManagement: React.FC = () => {
                                     >
                                       <DeleteIcon fontSize="small" />
                                     </IconButton>
-                                  </Tooltip>
+                                  </Tooltip> */}
                                 </Box>
                               </Box>
                             }
@@ -390,14 +390,16 @@ const MenuManagement: React.FC = () => {
             </Stack>
           )}
         </Box>
-        {showCreateForm && (
-          <MenuItemForm
-            editingItem={editingItem}
-            rootItems={rootItems}
-            onSubmit={handleFormSubmit}
-            onCancel={handleCancel}
-          />
-        )}
+      {showCreateForm && (
+        <MenuItemForm
+          editingItem={editingItem}
+          rootItems={rootItems}
+          onSubmit={handleFormSubmit}
+          onCancel={handleCancel}
+          onDelete={handleDelete}
+          onToggleActive={toggleActiveStatus}
+        />
+      )}
       </Stack>
     </Paper>
   );

@@ -9,16 +9,14 @@ import { RouteProvider } from './contexts/RouteContext';
 import './App.css'
 
 // Remote App Components
-const RemoteButton = React.lazy(() => import('remoteApp/Button'));
-const RemoteCard = React.lazy(() => import('remoteApp/Card'));
 const RemoteLogin = React.lazy(() => import('remoteApp/Login'));
-
+const RemoteRegistration = React.lazy(() => import('remoteApp/Registration'));
 // Admin App Components
 const AdminDashboard = React.lazy(() => import('adminApp/AdminDashboard'));
 const UserManagement = React.lazy(() => import('adminApp/UserManagement'));
 const MenuManagement = React.lazy(() =>
   import('adminApp/MenuManagement').catch(() => {
-  // Fallback component if MenuManagement fails to load
+    // Fallback component if MenuManagement fails to load
     return {
       default: () => (
         <div>
@@ -32,15 +30,7 @@ const MenuManagement = React.lazy(() =>
 );
 
 // Route Components
-const RemoteDashboard = () => (
-  <div>
-    <h2>Remote Dashboard</h2>
-    <Suspense fallback={<div>Loading Remote Components...</div>}>
-      <RemoteCard />
-      <RemoteButton text="Remote Action" onClick={() => alert('Remote action triggered!')} />
-    </Suspense>
-  </div>
-);
+
 const Login = () => (
   <div>
     <h2>Login</h2>
@@ -103,11 +93,17 @@ function App() {
               }}
             >
               <Routes>
-                <Route path="/" element={<Navigate to="/remote/dashboard" replace />} />
-                <Route path="/remote/dashboard" element={<RemoteDashboard />} />
+                <Route path="/" element={<Navigate to="/remote/connections" replace />} />
                 <Route path="/remote/connections" element={<RemoteConnections />} />
                 <Route path="/remote/remote-settings" element={<RemoteSettings />} />
-                <Route path="/remote/login" element={<Login />} />
+                <Route path="/remote/login" element={
+                  <Suspense fallback={<div>Loading Remote Components...</div>}>
+                    <RemoteLogin />
+                  </Suspense>} />
+                <Route path="/remote/register" element={
+                  <Suspense fallback={<div>Loading Remote Components...</div>}>
+                    <RemoteRegistration />
+                  </Suspense>} />
                 <Route path="/admin/users" element={
                   <Suspense fallback={<div>Loading Admin Components...</div>}>
                     <UserManagement />

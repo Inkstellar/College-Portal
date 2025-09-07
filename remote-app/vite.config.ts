@@ -10,9 +10,8 @@ export default defineConfig({
       name: 'remote-app',
       filename: 'remoteEntry.js',
       exposes: {
-        './Button': './src/components/Button.tsx',
-        './Card': './src/components/Card.tsx',
         './Login': './src/components/forms/Login.tsx',
+        './Registration': './src/components/forms/Registration.tsx',
       },
       shared: ['react', 'react-dom'],
     }),

@@ -11,8 +11,16 @@ import {
   Switch,
   Typography,
   Paper,
-  Grid
+  Grid,
+  IconButton,
+  Tooltip,
+  Alert
 } from '@mui/material';
+import {
+  Delete as DeleteIcon,
+  Block as DeactivateIcon,
+  CheckCircle as ActivateIcon
+} from '@mui/icons-material';
 
 interface MenuItem {
   id: string;
@@ -32,13 +40,17 @@ interface MenuItemFormProps {
   rootItems: MenuItem[];
   onSubmit: (formData: any) => Promise<void>;
   onCancel: () => void;
+  onDelete?: (id: string) => Promise<void>;
+  onToggleActive?: (id: string, currentStatus: boolean) => Promise<void>;
 }
 
 const MenuItemForm: React.FC<MenuItemFormProps> = ({
   editingItem,
   rootItems,
   onSubmit,
-  onCancel
+  onCancel,
+  onDelete,
+  onToggleActive
 }) => {
   // Form state
   const [formData, setFormData] = useState({
@@ -95,7 +107,7 @@ const MenuItemForm: React.FC<MenuItemFormProps> = ({
   };
 
   return (
-    <Paper sx={{ p: 3, mb: 3, minWidth:'40%' }}>
+    <Paper sx={{ p: 3, mb: 3, flex:1 }}>
       <Typography variant="h5" component="h3" gutterBottom color="primary">
         {editingItem ? 'Edit Menu Item' : 'Create New Menu Item'}
       </Typography>
@@ -153,7 +165,7 @@ const MenuItemForm: React.FC<MenuItemFormProps> = ({
             />
           </Box>
 
-          <Box sx={{ minWidth: 250, flex: '1 1 auto' }}>
+          <Box sx={{ minWidth: 250, flex: '1 1 auto',textAlign:'left' }}>
             <FormControl fullWidth size="small">
               <InputLabel>Parent Menu</InputLabel>
               <Select
@@ -223,22 +235,62 @@ const MenuItemForm: React.FC<MenuItemFormProps> = ({
           </Box>
         </Box>
 
-        <Box sx={{ borderTop: 1, borderColor: 'divider', pt: 2,display:'flex' }}>
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            sx={{ mr: 2 ,flex:1}}
-          >
-            {editingItem ? 'Update Menu Item' : 'Create Menu Item'}
-          </Button>
-          <Button
-            type="button"
-            variant="outlined"
-            onClick={onCancel}
-          >
-            Cancel
-          </Button>
+        <Box sx={{ borderTop: 1, borderColor: 'divider', pt: 2 }}>
+          {/* Action buttons for editing existing items */}
+          {editingItem && (
+            <Box sx={{ mb: 2, p: 2, bgcolor: 'grey.50', borderRadius: 1, border: 1, borderColor: 'warning.main' }}>
+              <Typography variant="body2" color="text.secondary" gutterBottom>
+                <strong>Danger Zone:</strong> This action cannot be undone.
+              </Typography>
+              <Box sx={{ display: 'flex', gap: 1, mt: 1 }}>
+                {/* <Tooltip title={editingItem.isActive ? 'Deactivate this menu item' : 'Activate this menu item'}>
+                  <Button
+                    variant="outlined"
+                    color={editingItem.isActive ? 'warning' : 'success'}
+                    startIcon={editingItem.isActive ? <DeactivateIcon /> : <ActivateIcon />}
+                    onClick={() => onToggleActive && onToggleActive(editingItem.id, editingItem.isActive)}
+                    size="small"
+                  >
+                    {editingItem.isActive ? 'Deactivate' : 'Activate'}
+                  </Button>
+                </Tooltip> */}
+                <Tooltip title="Permanently delete this menu item">
+                  <Button
+                    variant="contained"
+                    color="error"
+                    startIcon={<DeleteIcon />}
+                    onClick={() => {
+                      if (window.confirm(`Are you sure you want to delete "${editingItem.label}"? This action cannot be undone.`)) {
+                        onDelete && onDelete(editingItem.id);
+                      }
+                    }}
+                    size="small"
+                  >
+                    Delete Item
+                  </Button>
+                </Tooltip>
+              </Box>
+            </Box>
+          )}
+
+          {/* Main form buttons */}
+          <Box sx={{ display: 'flex', gap: 2 }}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              sx={{ flex: 1 }}
+            >
+              {editingItem ? 'Update Menu Item' : 'Create Menu Item'}
+            </Button>
+            <Button
+              type="button"
+              variant="outlined"
+              onClick={onCancel}
+            >
+              Cancel
+            </Button>
+          </Box>
         </Box>
       </Box>
     </Paper>
